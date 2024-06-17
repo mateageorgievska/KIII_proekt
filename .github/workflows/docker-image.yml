@@ -27,7 +27,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/teamplayerapp:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/teamplayerapp:latest
 
       - name: Verify Docker image
-        run: docker run -d -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/teamplayerapp:latest
+        run: docker run -d -p 8080:8080 ${{ secrets.DOCKERHUB_USERNAME }}/teamplayerapp:latest
