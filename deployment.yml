@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamplayerapp
+  namespace: teamplayerapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: teamplayerapp
+  template:
+    metadata:
+      labels:
+        app: teamplayerapp
+    spec:
+      containers:
+        - name: teamplayerapp
+          image: mateageorgievska13531/teamplayerapp:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: password
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              subPath: application.properties
+      volumes:
+        - name: config-volume
+          configMap:
+            name: app-config
+            items:
+              - key: application.properties
+                path: application.properties
