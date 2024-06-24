@@ -8,6 +8,6 @@ spec:
     app: teamplayerapp
   ports:
     - protocol: TCP
-      port: 5432
-      targetPort: 5432
+      port: 80
+      targetPort: 9092
   type: ClusterIP

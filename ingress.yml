@@ -16,4 +16,4 @@ spec:
               service:
                 name: teamplayerapp-service
                 port:
-                  number: 5432
+                  number: 9092
