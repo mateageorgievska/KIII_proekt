@@ -7,7 +7,7 @@ services:
 
     container_name: teamplayerapp
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/mydb
+      SPRING_DATASOURCE_URL: jdbc:postgresql://mydb-kiii:5432/mydb
     ports:
       - 8080:8080
     depends_on:
